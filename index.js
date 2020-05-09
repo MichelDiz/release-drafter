@@ -27,9 +27,9 @@ module.exports = app => {
 
     const branch = ref.replace(/^refs\/heads\//, '')
 
-    if (!isTriggerableBranch({ branch, app, context, config })) {
-      return
-    }
+    // if (!isTriggerableBranch({ branch, app, context, config })) {
+    //   return
+    // }
 
     const { draftRelease, lastRelease } = await findReleases({ app, context })
     const {
