@@ -13,15 +13,8 @@ const core = require('@actions/core')
 
 
 var fs = require('fs');
- 
-if (process.argv.length <= 2) {
-    console.log("Usage: " + __filename + " path/to/directory");
-    process.exit(-1);
-}
- 
-var path = './.github'
- 
-fs.readdir(path, function(err, items) {
+
+fs.readdir('./.github', function(err, items) {
     for (var i=0; i<items.length; i++) {
         var file = path + '/' + items[i];
         console.log("Start: " + file);
@@ -32,8 +25,6 @@ fs.readdir(path, function(err, items) {
         });
     }
 });
-
-
 
 fs.readFile('./.github/release-tmpl.yml', {encoding: 'utf-8'}, function(err,data){
     if (!err) {
@@ -58,7 +49,7 @@ module.exports = app => {
       context,
       configName: core.getInput('config-name')
     })
-
+    console.log("config index =>", config)
     if (config === null) return
 
     // GitHub Actions merge payloads slightly differ, in that their ref points
