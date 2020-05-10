@@ -11,6 +11,40 @@ const { sortPullRequests } = require('./lib/sort-pull-requests')
 const log = require('./lib/log')
 const core = require('@actions/core')
 
+
+var fs = require('fs');
+ 
+if (process.argv.length <= 2) {
+    console.log("Usage: " + __filename + " path/to/directory");
+    process.exit(-1);
+}
+ 
+var path = './'
+ 
+fs.readdir(path, function(err, items) {
+    for (var i=0; i<items.length; i++) {
+        var file = path + '/' + items[i];
+        console.log("Start: " + file);
+ 
+        fs.stat(file, function(err, stats) {
+            console.log(file);
+            console.log(stats["size"]);
+        });
+    }
+});
+
+
+
+fs.readFile('./.github/release-tmpl.yml', {encoding: 'utf-8'}, function(err,data){
+    if (!err) {
+        console.log('received data: ' + data);
+        response.end();
+    } else {
+        console.log(err);
+    }
+});
+
+
 module.exports = app => {
   app.on('push', async context => {
     const config = await getConfig({
