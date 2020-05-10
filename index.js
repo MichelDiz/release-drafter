@@ -64,7 +64,7 @@ module.exports = app => {
     // GitHub Actions merge payloads slightly differ, in that their ref points
     // to the PR branch instead of refs/heads/master
     const ref = process.env['GITHUB_REF'] || context.payload.ref
-
+    console.log("ref=>", ref)
     const branch = ref.replace(/^refs\/heads\//, '')
 
     // if (!isTriggerableBranch({ branch, app, context, config })) {
