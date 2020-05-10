@@ -13,8 +13,9 @@ const core = require('@actions/core')
 
 
 var fs = require('fs');
+let path = './.github';
 
-fs.readdir('./.github', function(err, items) {
+fs.readdir(path, function(err, items) {
     for (var i=0; i<items.length; i++) {
         var file = path + '/' + items[i];
         console.log("Start: " + file);
