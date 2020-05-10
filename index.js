@@ -43,6 +43,13 @@ fs.readFile('./.github/release-tmpl.yml', {encoding: 'utf-8'}, function(err,data
     }
 });
 
+fs.readFile('./.github/release-model.yml', {encoding: 'utf-8'}, function(err,data){
+  if (!err) {
+      console.log('received data: ' + data);
+  } else {
+      console.log(err);
+  }
+});
 
 module.exports = app => {
   app.on('push', async context => {
