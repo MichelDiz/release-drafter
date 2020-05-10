@@ -45,17 +45,17 @@ fs.readFile('./.github/release-model.yml', {encoding: 'utf-8'}, function(err,dat
 
 module.exports = app => {
   app.on('push', async context => {
-    //console.log("context index =>", context.payload)
+    console.log("context default_branch at index =>", context.payload.repository.default_branch)
 
-    const newContext = {
-      ...context,
-      payload: { ...context.payload, repository: { default_branch: 'release/v20.4.0' } },
-      config: context.config
-    }
+    // const newContext = {
+    //   ...context,
+    //   payload: { ...context.payload, repository: { default_branch: 'release/v20.4.0' } },
+    //   config: context.config
+    // }
 
     const config = await getConfig({
       app,
-      context: newContext,
+      context,
       configName: core.getInput('config-name')
     })
     console.log("config index =>", config)
