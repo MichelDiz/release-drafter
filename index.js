@@ -49,7 +49,7 @@ module.exports = app => {
 
     const newContext = {
       ...context,
-      payload: { repository: { default_branch: 'release/v20.4.0' } },
+      payload: { ...context.payload, repository: { default_branch: 'release/v20.4.0' } },
       config: context.config
     }
 
