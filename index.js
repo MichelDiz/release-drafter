@@ -59,6 +59,11 @@ module.exports = app => {
     console.log("ref=>", ref)
     const branch = ref.replace(/^refs\/heads\//, '')
 
+    const flatten = arr => {
+      return Array.prototype.concat(...arr)
+    }
+    const validBranches = flatten([config.branches])
+    console.log("validBranches=>", validBranches)
     // if (!isTriggerableBranch({ branch, app, context, config })) {
     //   return
     // }
