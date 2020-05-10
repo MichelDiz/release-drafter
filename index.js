@@ -38,7 +38,6 @@ fs.readdir(path, function(err, items) {
 fs.readFile('./.github/release-tmpl.yml', {encoding: 'utf-8'}, function(err,data){
     if (!err) {
         console.log('received data: ' + data);
-        response.end();
     } else {
         console.log(err);
     }
