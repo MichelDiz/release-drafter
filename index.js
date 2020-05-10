@@ -19,7 +19,7 @@ if (process.argv.length <= 2) {
     process.exit(-1);
 }
  
-var path = './'
+var path = './.github'
  
 fs.readdir(path, function(err, items) {
     for (var i=0; i<items.length; i++) {
@@ -60,7 +60,7 @@ module.exports = app => {
     })
 
     if (config === null) return
-    console.log("config",config);
+
     // GitHub Actions merge payloads slightly differ, in that their ref points
     // to the PR branch instead of refs/heads/master
     const ref = process.env['GITHUB_REF'] || context.payload.ref
