@@ -45,6 +45,7 @@ fs.readFile('./.github/release-model.yml', {encoding: 'utf-8'}, function(err,dat
 
 module.exports = app => {
   app.on('push', async context => {
+    console.log("context index =>", context.payload)
     const config = await getConfig({
       app,
       context,
